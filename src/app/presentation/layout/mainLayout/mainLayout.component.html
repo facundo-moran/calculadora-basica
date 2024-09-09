@@ -1,0 +1,27 @@
+<div class="flex flex-col min-h-screen bg-gray-900 text-gray-100 font-code">
+  <header class="bg-gray-800 bg-gradient-to-t from-[#152331] to-[#000000] text-[#16A085] py-4 shadow-lg">
+    <div class="container mx-auto px-4">
+      <h1 class="text-2xl font-bold"><span class="texto-palo-alto">&lt;Facundo Morán/&gt;</span></h1>
+      <!-- <nav class="mt-2">
+        <ul class="flex space-x-4">
+          <li><a routerLink="/" class="hover:text-green-300 transition-colors duration-200">Home</a></li>
+          <li><a routerLink="/about" class="hover:text-green-300 transition-colors duration-200">About</a></li>
+          <li><a routerLink="/projects" class="hover:text-green-300 transition-colors duration-200">Projects</a></li>
+        </ul>
+      </nav> -->
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="p-6 rounded-lg">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <app-social-footer
+    usuarioInstagram="mrnfacu"
+    usuarioLinkedin="moran-facundo"
+    usuarioGithub="facundo-moran"
+    nombre="Facundo Morán"
+  ></app-social-footer>
+</div>

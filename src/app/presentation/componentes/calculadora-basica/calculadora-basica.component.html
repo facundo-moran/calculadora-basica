@@ -1,0 +1,54 @@
+<div class="w-full h-40 bg-gradient-to-b from-[#0F2027] via-[#203A43] to-[#2C5364] flex items-end text-right rounded-t-lg">
+  <div class="w-full py-5 px-6 text-white text-4xl font-bold md:text-6xl md:font-thin">
+    @if ( estado().subResultado !== '0') {
+      <span class="text-2xl md:text-4xl">{{ estado().subResultado }} {{ estado().ultimaOperacion }}</span>
+    }
+    <br>
+    <span>{{ estado().resultado }}</span>
+  </div>
+</div>
+<div class="my-1 w-full">
+  <div class="flex space-x-1 w-full">
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">c</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">+/-</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">%</boton-calculadora>
+    <boton-calculadora esBotonOperacion (contenidoEmitter)="onButtonClick($event)">÷</boton-calculadora>
+  </div>
+  <div class="flex space-x-1 w-full">
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">7</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">8</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">9</boton-calculadora>
+    <boton-calculadora esBotonOperacion (contenidoEmitter)="onButtonClick($event)">x</boton-calculadora>
+  </div>
+  <div class="flex space-x-1 w-full">
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">4</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">5</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">6</boton-calculadora>
+    <boton-calculadora esBotonOperacion (contenidoEmitter)="onButtonClick($event)">-</boton-calculadora>
+  </div>
+  <div class="flex space-x-1 w-full">
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">1</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">2</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">3</boton-calculadora>
+    <boton-calculadora esBotonOperacion (contenidoEmitter)="onButtonClick($event)">+</boton-calculadora>
+  </div>
+  <div class="flex space-x-1 w-full">
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">0</boton-calculadora>
+    <boton-calculadora (contenidoEmitter)="onButtonClick($event)">,</boton-calculadora>
+    <boton-calculadora
+      esBotonOperacion
+      esBotonDoble
+      (contenidoEmitter)="onButtonClick($event)"
+    >=</boton-calculadora>
+  </div>
+</div>
+<!-- <div class="display bg-gray-800 text-white p-4 rounded-t-lg mb-2">
+  <div class="text-right text-2xl font-light">{{ displayValue }}</div>
+</div> -->
+<!-- <div class="grid grid-cols-4 gap-2">
+  <button *ngFor="let btn of buttons"
+          (click)="onButtonClick(btn)"
+          class="btn {{ getBtnClass(btn) }}">
+    {{ btn }}
+  </button>
+</div> -->

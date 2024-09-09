@@ -1,27 +1,138 @@
-# CalculadoraBasica
+<div style="text-align: center">
+  <img src="./public/images/svg/angular.svg" style="max-width: 200px;" />
+  <h1>Calculadora Básica</h1>
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+## Durante el desarrollo de esta aplicación utilice los siguientes conceptos
 
-## Development server
+### Signal
+---
+	Como se explica en la documentación oficial una señal es una envoltura para un valor primitivo o complejo que notificará, a los interesados en el valor, cuando el mismo cambie y pueden ser de solo lectura como modificables.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Output() - outputs de componentes basado en función
+---
+	La funcion output() que nos permite emitir valores hacia componentes padres. 
+	Los contenedores padres pueden obtener los valores emitidos usando la sintaxis "event binding".
 
-## Code scaffolding
+```
+import {Component, output} from '@angular/core';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@Component({...})
+export class MyComp {
+  clicked = output<string>()    // OutputEmitterRef<string>
+  setNewName(newName: string) {
+    this.clicked.emit(newName);
+  }
+}
+```
 
-## Build
+```
+# Ejemplo de "event binding"
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<button
+  (click)="onClicked()"
+>
+  click me
+</button>
+```
 
-## Running unit tests
+### ViewChild - View Queries as signals
+---
+	Como su nombre indica, nos permiten realizar consultas o búsquedas dentro de las vistas (templates html) en busca de un único elemento, cuyo valor será envuelto en una señal o en caso de no encontrarlo undefined.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+@Component({
+  template:
+	<div #el></div>
+    <my-component />
+})
+export class TestComponent {
+  // query for a single result by a string predicate  
+  divEl = viewChild<ElementRef>('el')  // Signal<ElementRef|undefined>
+  // query for a single result by a type predicate
+  cmp = viewChild(MyComponent);        // Signal<MyComponent|undefined>
+}
+```
 
-## Running end-to-end tests
+```
+# Ejemplo de viewChild
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+@Component({
+  template: `
+    <div #el></div>
+    <my-component />
+  `
+})
+export class TestComponent {
+  // query for a single result by a string predicate  
+  divEl = viewChild<ElementRef>('el')  // Signal<ElementRef|undefined>
+  // query for a single result by a type predicate
+  cmp = viewChild(MyComponent);        // Signal<MyComponent|undefined>
+}
+```
 
-## Further help
+### ViewChildren - View Queries as signals
+---
+	Como su nombre indica, nos permiten realizar consultas o búsquedas dentro de las vistas (templates html) en busca de todos los elementos, cuyo valor será envuelto en una señal de solo lectura o en caso de no encontrarlo undefined.
+### Ng-content - Content Projection 
+---
+	Es el elemento <ng-content> de Angular que nos permite indicar dentro de un componente, el lugar en donde se va a proyectar o renderizar el contenido que especifiquemos.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+// Component source
+@Component({
+  selector: 'custom-card',
+  template: `
+    <div class="card-shadow">
+      <ng-content />
+    </div>
+  `,
+})
+export class CustomCard {/* ... */}
+```
+
+```
+# Ejemplo de Content Projection
+
+// Component source
+@Component({
+  selector: 'custom-card',
+  template: `
+    <div class="card-shadow">
+      <ng-content />
+    </div>
+  `,
+})
+export class CustomCard {/* ... */}
+```
+
+### Host - Binding to the host element
+---
+	El elemento host de un componente es el elemento del DOM que hace match con su selector. El contenido del template html del componente siempre se renderiza dentro dentro de su elemento host.
+
+	Un componente tiene el poder de enlazar propiedades, atributos y eventos a su elemento host haciendo uso de la propiedad host dentro del decorador @Component.
+
+```
+@Component({
+  ...,
+  host: {
+    'role': 'slider',
+    '[attr.aria-valuenow]': 'value',
+    '[tabIndex]': 'disabled ? -1 : 0',
+    '(keydown)': 'updateValue($event)',
+  },
+})
+export class CustomSlider {
+  value: number = 0;
+  disabled: boolean = false;
+  updateValue(event: KeyboardEvent) { /* ... */ }
+  /* ... */
+}
+```
+
+---
+### Referencias
+- [Función output](https://angular.dev/guide/components/output-fn)
+- [Consulta de elementos como señal](https://angular.dev/guide/signals/queries#viewchild)
+- [Proyección de contenido](https://angular.dev/guide/components/content-projection)
+- [Propiedad host](https://angular.dev/guide/components/host-elements#the-hostbinding-and-hostlistener-decorators)
