@@ -136,3 +136,4 @@ export class CustomSlider {
 - [Consulta de elementos como señal](https://angular.dev/guide/signals/queries#viewchild)
 - [Proyección de contenido](https://angular.dev/guide/components/content-projection)
 - [Propiedad host](https://angular.dev/guide/components/host-elements#the-hostbinding-and-hostlistener-decorators)
+- [Testing](https://angular.dev/guide/testing)
