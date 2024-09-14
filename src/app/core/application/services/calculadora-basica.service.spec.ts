@@ -165,4 +165,80 @@ describe('CalculadoraBasica', () => {
     expect(calculadora.subResultado).toBe(subResultadoEsperado);
     expect(calculadora.ultimaOperacion).toBe(ultimaOperacionEsperada);
   });
+
+  it('should convert a value from positive to negative and vice versa for "+/-" operation', () => {
+    /*
+      *   PREPARACION
+    */
+    const numerosIngresados1 = ['2', '5', '0'];
+    const numerosIngresados2 = ['5', '0'];
+    const resultadoEsperado = -5;
+    const operacionCambioDeSigno = '+/-';
+
+    /*
+      *   ESTIMULO (ACCION DE UN USUARIO)
+    */
+    numerosIngresados1.forEach(num => calculadora.procesar(num)); //250
+    calculadora.procesar(operacionDeDivision); // /
+    numerosIngresados2.forEach(num => calculadora.procesar(num)); //50
+
+    /*
+    *   CONFIRMACION (toBe para confirmar un valor primitivo exacto)
+    */
+    calculadora.procesar(operacionDeIgual); //=
+
+    calculadora.procesar(operacionCambioDeSigno); //=
+    expect(calculadora.resultado).toBe(resultadoEsperado.toString());
+    calculadora.procesar(operacionCambioDeSigno); //=
+    expect(calculadora.resultado).toBe((resultadoEsperado * -1).toString());
+  });
+
+  it('should convert a value from positive to negative and vice versa for "+/-" operation', () => {
+    /*
+      *   PREPARACION
+    */
+    const numerosIngresados1 = ['2', '5', '0'];
+    const numerosIngresados2 = ['5', '0'];
+    const resultadoEsperado = -5;
+    const operacionCambioDeSigno = '+/-';
+
+    /*
+      *   ESTIMULO (ACCION DE UN USUARIO)
+    */
+    numerosIngresados1.forEach(num => calculadora.procesar(num)); //250
+    calculadora.procesar(operacionDeDivision); // /
+    numerosIngresados2.forEach(num => calculadora.procesar(num)); //50
+
+    /*
+    *   CONFIRMACION (toBe para confirmar un valor primitivo exacto)
+    */
+    calculadora.procesar(operacionDeIgual); //=
+
+    calculadora.procesar(operacionCambioDeSigno); //=
+    expect(calculadora.resultado).toBe(resultadoEsperado.toString());
+    calculadora.procesar(operacionCambioDeSigno); //=
+    expect(calculadora.resultado).toBe((resultadoEsperado * -1).toString());
+  });
+
+  it('should remove last inserted value when Backspace is pressed', () => {
+    /*
+      *   PREPARACION
+    */
+    const numerosIngresados1 = ['2', '5', '0'];
+    const resultadoEsperado = 25;
+    const operacionDeBorrado = 'Backspace';
+
+    /*
+      *   ESTIMULO (ACCION DE UN USUARIO)
+    */
+    numerosIngresados1.forEach(num => calculadora.procesar(num)); //250
+    calculadora.procesar(operacionDeBorrado); // Backspace
+
+    /*
+    *   CONFIRMACION (toBe para confirmar un valor primitivo exacto)
+    */
+   expect(calculadora.resultado).toBe(resultadoEsperado.toString());
+   calculadora.procesar(operacionDeBorrado); // Backspace
+   expect(calculadora.resultado).toBe('2');
+  });
 });

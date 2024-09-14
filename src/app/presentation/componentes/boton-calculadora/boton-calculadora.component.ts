@@ -62,7 +62,7 @@ export class BotonCalculadoraComponent {
 
     if (existeValorProyectado) {
       this.teclaPresionada.set(true);
-
+      
       setTimeout(() => {
         this.teclaPresionada.set(false);
       }, 100)
