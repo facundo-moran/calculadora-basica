@@ -33,6 +33,9 @@ export class CalculadoraBasicaComponent {
   /*
     OBJETOS
   */
+  /*
+   LISTA DE BOTONES DE LA CALCULADORA
+  */
   botonesArr = viewChildren(BotonCalculadoraComponent);
 
   /*
@@ -47,22 +50,25 @@ export class CalculadoraBasicaComponent {
     this.calculadora.procesar(valor);
   }
 
+  /**
+   *  FIRST USER INPUT CHANNEL
+   */
   onKeyboardPress(evt: KeyboardEvent) {
-    const ClearKeyRecord: Record<string, string> = {
+    const keySanitizerRecord: Record<string, string> = {
       'Escape': 'c',
       'Clear': 'c',
       'Delete': 'c'
     };
 
-    const OperationKeyRecord: Record<string, string> = {
+    const operationKeySanititerRecord: Record<string, string> = {
       '*': 'x',
       '/': '÷',
       '.': ',',
       'Enter': '='
     };
 
-    const key = ClearKeyRecord[evt.key] || OperationKeyRecord[evt.key] || evt.key;
-
+    const key = keySanitizerRecord[evt.key] || operationKeySanititerRecord[evt.key] || evt.key;
+    
     this.onButtonClick(key);
 
     this.botonesArr().forEach(btn => {
