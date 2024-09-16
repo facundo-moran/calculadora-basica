@@ -1,7 +1,9 @@
 import {
+  afterRender,
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   inject,
   viewChildren
 } from '@angular/core';
@@ -21,7 +23,8 @@ import {
   templateUrl: './calculadora-basica.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '(document:keyup)': 'onKeyboardPress($event)'
+    '(document:keyup)': 'onKeyboardPress($event)',
+    '(document:load)': 'scrollTo()',
   }
 })
 export class CalculadoraBasicaComponent {

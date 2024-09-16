@@ -20,6 +20,9 @@ module.exports = {
           '50%': { backgroundPosition: '"100% 50%"'},
           '100%': { backgroundPosition: '"0% 50%"'},
         }
+      },
+      screens: {
+        'ss': '320px',
       }
     },
   },

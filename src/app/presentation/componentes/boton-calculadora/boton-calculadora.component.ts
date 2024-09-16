@@ -28,6 +28,22 @@ import {
   }
 })
 export class BotonCalculadoraComponent {
+  private clickSound = signal<HTMLAudioElement>(new Audio('/sounds/button-press.mp3'));
+
+  constructor() {
+    if (this.clickSound()) {
+      this.clickSound().preload = 'auto'; // Asegura que el audio se cargue antes de reproducirlo
+      this.clickSound().playbackRate = 1;
+      this.clickSound().volume = .5;
+    }
+  }
+
+  playClickSound() {
+    this.clickSound().pause();
+    this.clickSound().currentTime = 0;
+    this.clickSound().play();
+  }
+
   esBotonOperacion = input(false, {
     /*
       TRANSFORMA EL VALOR ANTES DEL ON INIT
@@ -61,6 +77,7 @@ export class BotonCalculadoraComponent {
     const existeValorProyectado = this.valorProyectado() && this.valorProyectado()?.nativeElement;
 
     if (existeValorProyectado) {
+      this.playClickSound();
       this.teclaPresionada.set(true);
 
       setTimeout(() => {
@@ -78,6 +95,7 @@ export class BotonCalculadoraComponent {
       const contenido = this.valorProyectado()!.nativeElement.innerText;
 
       if (key === contenido) {
+        this.playClickSound();
         this.teclaPresionada.set(true);
 
         setTimeout(() => {

@@ -1,6 +1,8 @@
 import {
+  afterRender,
   ChangeDetectionStrategy,
-  Component
+  Component,
+  ElementRef
 } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
@@ -19,4 +21,17 @@ import {
   templateUrl: './mainLayout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainLayoutComponent { }
+export class MainLayoutComponent {
+
+  /*
+    CONSTRUCTOR
+  */
+  // constructor(elementRef: ElementRef) {
+  //   afterRender(() => {
+  //     elementRef.nativeElement.querySelector('.contenedor-calculadora')?.scrollIntoView({
+  //       behavior: 'smooth'
+  //     });
+  //   });
+  // }
+
+}

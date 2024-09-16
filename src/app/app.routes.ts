@@ -4,11 +4,11 @@ import { CalculadoraBasicaVista } from './presentation/vistas/calculadoraBasica/
 
 export const routes: Routes = [
   {
-    path: 'calculadora',
+    path: '',
     loadComponent: () => CalculadoraBasicaVista,
   },
   {
     path: '**',
-    redirectTo: 'calculadora'
+    redirectTo: ''
   }
 ];
