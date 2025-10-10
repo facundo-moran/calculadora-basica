@@ -1,6 +1,7 @@
 import {
   ApplicationConfig,
-  provideExperimentalZonelessChangeDetection
+  provideZonelessChangeDetection,
+  isDevMode
 } from '@angular/core';
 
 import {
@@ -8,6 +9,7 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +18,10 @@ export const appConfig: ApplicationConfig = {
     /*
       ZONELESS ACTIVATED 3/sep/24
     */
-    provideExperimentalZonelessChangeDetection(),
-  ]
+    provideZonelessChangeDetection(),
+    provideServiceWorker('ngsw-worker.js', {
+        enabled: !isDevMode(),
+        registrationStrategy: 'registerWhenStable:30000'
+    })
+]
 };

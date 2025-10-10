@@ -1,5 +1,5 @@
 import {
-  afterRender,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -17,15 +17,14 @@ import {
 } from '../boton-calculadora/boton-calculadora.component';
 
 @Component({
-  selector: 'calculadora-basica',
-  standalone: true,
-  imports: [BotonCalculadoraComponent],
-  templateUrl: './calculadora-basica.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '(document:keyup)': 'onKeyboardPress($event)',
-    '(document:load)': 'scrollTo()',
-  }
+    selector: 'calculadora-basica',
+    imports: [BotonCalculadoraComponent],
+    templateUrl: './calculadora-basica.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(document:keyup)': 'onKeyboardPress($event)',
+        '(document:load)': 'scrollTo()',
+    }
 })
 export class CalculadoraBasicaComponent {
   /*

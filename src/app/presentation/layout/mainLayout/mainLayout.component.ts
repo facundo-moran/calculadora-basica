@@ -1,5 +1,5 @@
 import {
-  afterRender,
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   ElementRef
@@ -12,14 +12,13 @@ import {
 } from '@/presentation/componentes/socialFooter/socialFooter.component';
 
 @Component({
-  selector: 'main-layout',
-  standalone: true,
-  imports: [
-    SocialFooterComponent,
-    RouterOutlet
-  ],
-  templateUrl: './mainLayout.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'main-layout',
+    imports: [
+        SocialFooterComponent,
+        RouterOutlet
+    ],
+    templateUrl: './mainLayout.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainLayoutComponent {
 

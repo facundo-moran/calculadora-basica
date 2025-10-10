@@ -8,13 +8,12 @@ import {
 } from '@/presentation/componentes/calculadora-basica/calculadora-basica.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    CalculadoraBasicaComponent
-  ],
-  templateUrl: './calculadoraBasica.vista.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: `
+    imports: [
+        CalculadoraBasicaComponent
+    ],
+    templateUrl: './calculadoraBasica.vista.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: `
     .contenedor-calculadora {
       @apply font-sans;
     }
