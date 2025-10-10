@@ -18,6 +18,7 @@ import {
 
 @Component({
     selector: 'calculadora-basica',
+    standalone: true,
     imports: [BotonCalculadoraComponent],
     templateUrl: './calculadora-basica.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

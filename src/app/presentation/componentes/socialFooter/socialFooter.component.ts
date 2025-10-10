@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-social-footer',
+    standalone: true,
     imports: [
         CommonModule,
     ],

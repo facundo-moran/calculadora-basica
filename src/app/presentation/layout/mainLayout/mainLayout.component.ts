@@ -13,6 +13,7 @@ import {
 
 @Component({
     selector: 'main-layout',
+    standalone: true,
     imports: [
         SocialFooterComponent,
         RouterOutlet

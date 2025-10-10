@@ -8,6 +8,7 @@ import {
 } from '@/presentation/componentes/calculadora-basica/calculadora-basica.component';
 
 @Component({
+    standalone: true,
     imports: [
         CalculadoraBasicaComponent
     ],
