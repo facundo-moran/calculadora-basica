@@ -15,11 +15,11 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: `
     .es-btn-operacion {
-      @apply bg-green-800 bg-opacity-20;
+      @apply bg-orange-500;
     }
 
     .es-tecla-presionada {
-      @apply bg-green-100 bg-opacity-20;
+      @apply bg-orange-300;
     }
   `,
   host: {
